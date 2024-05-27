@@ -1,5 +1,5 @@
 !*********************************************************************
-!  Program for project 1- Calcolo 20121. Lorenzo Cavazzini
+!  Program by Lorenzo Cavazzini
 !  Solves the hydrostatic equilibrium equation in a NFW+BCG potential
 !  Then solves the Fe diffusion eq. (for Perseus)
 !*********************************************************************

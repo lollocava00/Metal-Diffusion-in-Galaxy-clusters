@@ -48,5 +48,5 @@ which can be compared to the analytical solution
 
  $$   M_{DM}(r)=4\pi \rho_{DM,0} r_s^3 \left[ ln \left( 1+\frac{r}{r_s} \right) -\frac{r}{r+r_s}\right]$$
 
-![Alt text](plots/masse (2).png?raw=true)
+![Alt text](plots/masse.png?raw=true)
 

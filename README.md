@@ -135,17 +135,18 @@ winds;
 some extra considerations about the implications of different choices for the supernova metal injection.
 
 The time integration requires boundary conditions at the extreme of the grid: $\rho_{Fe}(1)=\rho_{Fe}(2)$, $\rho_{Fe}(jmax)=\rho_{Fe}(jmax-1)$ .
-The time step $\Delta t$ is chosen specifically as to not incur into instability issues; the condition for stability of the method used (FTCS) is $\Delta t \leq \frac{\Delta x^2}{2D} $ which in the code:
+The time step $\Delta t$ is chosen specifically as to not incur into instability issues; the condition for stability of the method used (FTCS) is $\Delta t \leq \frac{\Delta x^2}{2D}$ which in the code:
 
 $$    \Delta t=C\cdot \left(\frac{(r(5)-r(4))^2}{2D} \right)$$
 
 where C's value is set at 0.4 and the values for computing $\Delta x$ are chosen arbitrarily since the spacial grid is uniform.
 
 ## Diffusion only term
-To solve the diffusion equation, a**Forward-Time Centered-Space (FTCS)** method is used. This method is stable for diffusion equations because the dominant behaviour in diffusion processes is governed by the second-order spatial derivative, which tends to smooth out
+To solve the diffusion equation, a **Forward-Time Centered-Space (FTCS)** method is used. This method is stable for diffusion equations because the dominant behaviour in diffusion processes is governed by the second-order spatial derivative, which tends to smooth out
 fluctuations. without explicitly describing its derivation, the final initial-value problem looks like
 
-$$    \rho_{Fe,j+\frac{1}{2}}^{n+1}=\rho_{Fe,j+\frac{1}{2}}^n+\frac{\Delta t}{1.4} \frac{\left[ (r^2 D \rho \nabla Z_{Fe})_{j+1}^n - (r^2 D \rho \nabla Z_{Fe})_{j}^n\right]}{\frac{r_{j+1}^3-r_j^3}{3}}$$
+
+$$ \rho_{Fe,j+\frac{1}{2}}^{n+1}=\rho_{Fe,j+\frac{1}{2}}^n+\frac{\Delta t}{1.4} \frac{\left[ (r^2 D \rho \nabla Z_{Fe})_{j+1}^n - (r^2 D \rho \nabla Z_{Fe})_{j}^n \right]}{r_{j+1}^3-r_j^3}}$$
 
 The j index stands for a value on the spatial grid, while n indicates a value on a time grid. The gradient of the iron abundance is defined as follows:
 
@@ -163,7 +164,7 @@ I introduced a source term given by stellar mass loss and supernova activity:
 $$    S_{Fe}(r)=\rho_\ast(r) \left[\alpha_\ast (t)\frac{Z_{Fe}(r)}{1.4} +\alpha_{1a}(t) \frac{M_{Fe,1a}}{M_{1a}}\right]$$
 
 where $Z_{Fe}(r)$ is the stellar iron abundance which I set at solar metallicity as an initial condition.
-In this equation the two parameters $\alpha_\ast$ and $\alpha_{1a}$ describe stellar mass loss and supernova activity rate. For now I neglect the time dependency of these 2 parameters setting them at constant values. $\alpha_\ast$ depends on the evolution of single stellar populations and i set it at $\sim 4.7 \cdot 10^{-20}$. $\alpha_{1a}$ is more complicated to determine but it is dependent on the rate of supernova type 1a that are happening in the BCG; we relate such dependency via the \textbf{supernova unit, SNu}, the full treatment of how SNu is derived is omitted and for now it is set at $SNu = 0.15$. The value of $\alpha_{1a}= 5.91\cdot 10^{-21} \cdot SNu$. Finally $\rho_\ast$ is the Hernquist density profile which is the density contribution of stars in the BCG:
+In this equation the two parameters $\alpha_\ast$ and $\alpha_{1a}$ describe stellar mass loss and supernova activity rate. For now I neglect the time dependency of these 2 parameters setting them at constant values. $\alpha_\ast$ depends on the evolution of single stellar populations and i set it at $\sim 4.7 \cdot 10^{-20}$. $\alpha_{1a}$ is more complicated to determine but it is dependent on the rate of supernova type 1a that are happening in the BCG; we relate such dependency via the **supernova unit, SNu**, the full treatment of how SNu is derived is omitted and for now it is set at $SNu = 0.15$. The value of $\alpha_{1a}= 5.91\cdot 10^{-21} \cdot SNu$. Finally $\rho_\ast$ is the Hernquist density profile which is the density contribution of stars in the BCG:
 
 $$    \rho_\ast(r)=\frac{M_{BCG}}{2\pi}\frac{a}{r}\frac{1}{(r+a)^3}.$$
 
@@ -172,7 +173,7 @@ We re-integrate the diffusion equation this time only considering the source ter
 ![Alt text](plots/zfe_source.png?raw=true)
 
 ## Diffusion $+$ Source terms
-In order to best reproduce the observed Fe-abundance profile taken from Rebusco et al. (2005) (which is the Perseus cluster) to the best accuracy possible, both the source term and the diffusion term were numerically integrated in the code. During every time step \textit{Fe} is produced and subsequently distributed into the ICM. 
+In order to best reproduce the observed Fe-abundance profile taken from Rebusco et al. (2005) (which is the Perseus cluster) to the best accuracy possible, both the source term and the diffusion term were numerically integrated in the code. During every time step *Fe* is produced and subsequently distributed into the ICM. 
 
 The combination of the two different terms, starting from a null metal abundance and performed over the usual three time spans, returns Figure 8. The observed data (red dashed line) is not adequately recreated by the model.
 

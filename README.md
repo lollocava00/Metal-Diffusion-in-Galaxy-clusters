@@ -145,9 +145,7 @@ where C's value is set at 0.4 and the values for computing $\Delta x$ are chosen
 To solve the diffusion equation, a **Forward-Time Centered-Space (FTCS)** method is used. This method is stable for diffusion equations because the dominant behaviour in diffusion processes is governed by the second-order spatial derivative, which tends to smooth out
 fluctuations. without explicitly describing its derivation, the final initial-value problem looks like:
 
-$$ \rho_{Fe,j+\frac{1}{2}}^{n+1}=\rho_{Fe,j+\frac{1}{2}}^n+\frac{\Delta t}{1.4} *$$ 
-
-$$* \frac{ (r^2 D \rho \nabla Z_{Fe})_{j+1}^n - (r^2 D \rho \nabla Z_{Fe})_{j}^n }{r_{j+1}^3-r_j^3}  $$
+$$ \rho_{Fe,j+\frac{1}{2}}^{n+1}=\rho_{Fe,j+\frac{1}{2}}^n+\frac{\Delta t}{1.4} \frac{ \left[(r^2 D \rho_{j+1} \nabla Z_{Fe,j+1}) - (r^2 D \rho_j \nabla Z_{Fe,j})\right] }{r_{j+1}^3-r_j^3}  $$
 
 The j index stands for a value on the spatial grid, while n indicates a value on a time grid. The gradient of the iron abundance is defined as follows:
 

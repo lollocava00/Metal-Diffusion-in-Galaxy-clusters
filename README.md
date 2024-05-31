@@ -92,7 +92,7 @@ In an effort to upgrade the model to a more realistic version I introduced the f
 
  $$   \frac{T(r)}{T_{mg}}=1.35\frac{(\frac{x}{0.045})^{1.9}+0.45}{(\frac{x}{0.045})^{1.9}+1}\frac{1}{(1+(\frac{x}{0.6})^2)^{0.45}}$$
 
-where $ x=\frac{r}{r_{500}}$ ,  $ r_{500}\sim 1.4 Mpc $ and $T_{mg}=8.9\cdot 10^7 K$ are normalization constants.
+where $x=\frac{r}{r_{500}}$ ,  $r_{500} \sim 1.4 Mpc$ and $T_{mg}=8.9\cdot 10^7 K$ are normalization constants.
 Since now temperature is no more constant we need to account for it in the Hydrostatic equilibrium equation which becomes 
 
 $$   ln \rho_{j+\frac{1}{2}}=ln \rho_{j-\frac{1}{2}} -\Delta r \frac{G M_j}{r_j^2}\frac{\mu m_p}{k_b T_{j+\frac{1}{2}}}-(lnT_{j+1}-lnT_{j-1})$$
